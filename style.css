@@ -1,0 +1,150 @@
+* {
+  font-family: tahoma;
+}
+
+body {
+  margin: 0;
+}
+
+.wallpaper {
+  background-image: url("beach-with-umbrella-svgrepo-com.svg");
+  background-size: cover;
+  background-position: 0% 35%; /*xpos ypos*/
+  height: 100vh;
+  max-width: 100vw;
+}
+
+#hoorntjeinput,
+#vanilleinput,
+#chocoladeinput,
+#aardbeiinput,
+#waarschuwing {
+  display: none;
+}
+
+#waarschuwing {
+  font-weight: bold;
+}
+
+.container {
+  margin-bottom: 5px;
+}
+
+.containerBox,
+.smaakBox,
+.menuBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerBoxVraag,
+.smaakBoxVraag,
+.invoer,
+.menuTitel {
+  display: flex;
+  justify-content: center;
+}
+
+.containerBoxAntwoordenBox,
+.smaakBoxAntwoordenBox {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.verzendBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.verzendBoxKnop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  font-weight: bold;
+  width: 120px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.uitlijning {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.menu {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.menuItemLijst {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menuItemLijst ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0; /*verplaats list items naar link (over de lege plaats waar de bolletjes stonden)*/
+  width: 75%;
+}
+
+.menuItemLijst ul li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  border-bottom: black dotted 2px;
+}
+
+.menuItemRechts {
+  float: right; /*uitlijning vanaf rechtermarge*/
+}
+
+.ijsjeDisplay {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  max-width: 170px;
+  background-color: white;
+  width: 200px;
+  border-radius: 50px;
+}
+
+#bol0,
+#bol1,
+#bol2,
+#bol3,
+#bol4 {
+  display: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.upperScreenWrapper,
+.bottomScreenWrapper {
+  display: flex;
+}
+
+.ijsjeRowTop {
+  display: flex;
+  position: absolute;
+  margin-bottom: 30px;
+}
+
+.ijsjeRowBottom {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+}
