@@ -1,89 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Devanagari&display=swap");
+
 * {
-  font-family: tahoma;
+  font-family: "Manek Devanagri", tahoma;
 }
 
 body {
   margin: 0;
+  padding: 0;
+}
+
+.backer {
+  background-color: hsl(181, 26.1%, 45.1%, 0.65);
+  height: 50vh;
+  min-width: 43%;
+  position: absolute;
+  border-radius: 50px;
+  margin-left: -50px;
+  margin-top: -220px;
+  z-index: -1;
 }
 
 .wallpaper {
-  background-image: url("beach-with-umbrella-svgrepo-com.svg");
-  background-size: cover;
-  background-position: 0% 35%; /*xpos ypos*/
+  position: absolute;
+  background-image: url("./wallpaper - copy.png");
+  background-repeat: repeat;
   height: 100vh;
   max-width: 100vw;
+  z-index: -1;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: ((100%)/5);
+  grid-auto-rows: minmax(150px, auto);
+  row-gap: 40px;
+}
+
+.navbalk {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  background-image: url("./waffleconerepeating.png");
+  background-repeat: repeat;
+  height: 180px;
+  width: 100vw;
+  z-index: -1;
+}
+
+.menu {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+  margin-left: 20vw;
+}
+
+.display {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
+  margin-left: 20vw;
+}
+
+.invoer {
+  grid-column: 2;
+  grid-row: 2 / span 3;
+  justify-self: center;
+  margin-right: 27vw;
+}
+
+.knoppen {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.logo {
+  height: 150px;
+}
+
+.container {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.containerAntwoorden {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+}
+
+.smakenAntwoorden {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.containerTitel,
+.smakenTitel {
+  display: flex;
+  justify-content: center;
 }
 
 #hoorntjeinput,
 #vanilleinput,
 #chocoladeinput,
-#aardbeiinput,
-#waarschuwing {
+#aardbeiinput {
   display: none;
 }
 
 #waarschuwing {
+  display: none;
   font-weight: bold;
-}
-
-.container {
-  margin-bottom: 5px;
-}
-
-.containerBox,
-.smaakBox,
-.menuBox {
-  display: flex;
-  flex-direction: column;
-}
-
-.containerBoxVraag,
-.smaakBoxVraag,
-.invoer,
-.menuTitel {
-  display: flex;
-  justify-content: center;
-}
-
-.containerBoxAntwoordenBox,
-.smaakBoxAntwoordenBox {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: auto;
-}
-
-.verzendBox {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.verzendBoxKnop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  font-weight: bold;
-  width: 120px;
-  height: 40px;
-  border-radius: 50px;
-}
-
-.uitlijning {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-direction: column;
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
-.menu {
-  display: flex;
-  width: auto;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .menuItemLijst {
@@ -103,10 +133,13 @@ body {
   list-style-type: none;
   margin-bottom: 10px;
   border-bottom: black dotted 2px;
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .menuItemRechts {
   float: right; /*uitlijning vanaf rechtermarge*/
+  font-size: large;
 }
 
 .ijsjeDisplay {
@@ -116,7 +149,6 @@ body {
   align-items: center;
   height: 130px;
   max-width: 170px;
-  background-color: white;
   width: 200px;
   border-radius: 50px;
 }
@@ -130,11 +162,6 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50px;
-}
-
-.upperScreenWrapper,
-.bottomScreenWrapper {
-  display: flex;
 }
 
 .ijsjeRowTop {

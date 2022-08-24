@@ -14,86 +14,31 @@
 
 <body>
   <div class="wallpaper">
-    <div class="uitlijning">
-      <span class="upperScreenWrapper">
 
+    <div class="grid-container">
 
-        <div class="menu">
-          <div class="menuBox">
-            <div class="menuTitel">
-              <h1>De smaken van vandaag:</h1>
-            </div>
-            <span class="menuItemLijst" id="menuItemLijst">
-              <ul>
-                <li><span class="menuItem">Vanille
-                    <span class="menuItemRechts">€1.00</span></span></li>
-                <li><span>Chocolade</span>
-                  <span class="menuItemRechts">€1.00</span>
-                </li>
-                <li><span>Aardbei</span>
-                  <span class="menuItemRechts">€1.00</span>
-                </li>
-              </ul>
-            </span>
-          </div>
-        </div>
+      <div class="navbalk"><img class="logo" src="./jon&athan.png"></div>
 
+      <div class="menu">
 
-        <div class="invoer">
-          <form>
-            <div class="containerBox">
-              <h1 class="containerBoxVraag">Potje/hoorntje</h1>
+        <h1>De smaken van vandaag:</h1>
+        <span class="menuItemLijst" id="menuItemLijst">
+          <ul>
+            <li><span class="menuItem">Vanille
+                <span class="menuItemRechts">€1.00</span></span></li>
+            <li><span class="menuItem">Chocolade</span>
+              <span class="menuItemRechts">€1.00</span>
+            </li>
+            <li><span class="menuItem">Aardbei</span>
+              <span class="menuItemRechts">€1.00</span>
+            </li>
+          </ul>
+        </span>
+        <span class="backer"></span>
 
-              <div class="containerBoxAntwoordenBox">
-                <span class="container">
-                  <input type="radio" id="potje" value="potje" name="container" required>
-                  Potje
-                  </input>
-                </span>
-                <span class="container">
-                  <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
-                  Hoorntje
-                  </input>
-                </span>
-              </div>
-            </div>
+      </div>
 
-
-            <div class="smaakBox">
-              <h1 class="smaakBoxVraag">Smaken</h1>
-              <div class="smaakBoxAntwoordenBox">
-                <span>
-                  <input type="checkbox" id="vanille" value="vanille" name="smaak">Vanille</input>
-                  <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
-                </span>
-                <span>
-                  <input type="checkbox" id="chocolade" value="chocolade" name="smaak">Chocolade</input>
-                  <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
-                </span>
-                <span>
-                  <input type="checkbox" id="aardbei" value="aardbei" name="smaak">Aardbei</input>
-
-                  <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
-                </span>
-              </div>
-            </div>
-
-
-
-            <div class="verzendBox">
-              <div id="verzenden" class="verzendBoxKnop">Verzenden</div>
-            </div>
-
-            <div class="prijsBox" id="prijs"></div>
-
-            <p id="waarschuwing">Te veel bolletjes voor je containerkeuze!</p>
-        </div>
-
-
-        </form>
-      </span>
-      <span class="lowerScreenWrapper">
-
+      <div class="display">
         <span class="ijsjeDisplay">
           <span class="ijsjeRowBottom">
             <div id="bol0"></div>
@@ -105,11 +50,75 @@
             <div id="bol4"></div>
           </span>
         </span>
-      </span>
+
+      </div>
+
+
+      <div class="invoer">
+        <div class="containers">
+          <form>
+            <h1 class="containerTitel">Potje/hoorntje</h1>
+
+            <span class="containerAntwoorden">
+              <span class="container">
+                <input type="radio" id="potje" value="potje" name="container" required>
+                <label for="potje">Potje</label>
+              </span>
+              <span class="container">
+                <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
+                <label for="hoorntje"> Hoorntje</label>
+              </span>
+            </span>
+        </div>
+
+
+        <div class="smaken">
+          <h1 class="smakenTitel">Smaken</h1>
+          <span class="smakenAntwoorden">
+            <span>
+              <input type="checkbox" id="vanille" value="vanille" name="smaak">
+              <label for="vanille">Vanille</label>
+              <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
+            </span>
+            <span>
+              <input type="checkbox" id="chocolade" value="chocolade" name="smaak">
+              <label for="chocolade">Chocolade</label>
+              <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
+            </span>
+            <span>
+              <input type="checkbox" id="aardbei" value="aardbei" name="smaak">
+              <label for="aardbei">Aardbei</label>
+              <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
+            </span>
+        </div>
+      </div>
+
+      <div class="knoppen">
+        <div id="ok" class="okKnop">✔️</div>
+
+        <div id="clear" class="clearKnop">❌</div>
+      </div>
+
     </div>
+
+    <div class="verzendBox">
+
+
+    </div>
+
+    <div class="prijsBox" id="prijs"></div>
+
+    <p id="waarschuwing">Te veel bolletjes voor je containerkeuze!</p>
+  </div>
+
+
+  </form>
+  </span>
+  </div>
 
   </div>
   </div>
+
 
 </body>
 

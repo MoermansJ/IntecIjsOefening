@@ -105,7 +105,7 @@ $(document).ready(() => {
     c = parseInt(document.getElementById("aardbeiinput").value);
   });
 
-  $("#verzenden").on("click", () => {
+  $("#ok").on("click", () => {
     let som = a + b + c;
     if (som === 0 && containerKeuze == false) {
       alert("Je bent iets vergeten in te vullen in het formulier!");
@@ -114,19 +114,25 @@ $(document).ready(() => {
         "Maximum " + max + " bolletjes ijs voor een " + containerKeuze + "!"
       );
     } else {
-      for (let i = 0; i < a; i++) {
+      let i = 0;
+      for (i = 0; i < a; i++) {
         ijsje.push("vanille");
         prijs += vanille.prijs;
       }
-      for (let i = 0; i < b; i++) {
+      for (i = 0; i < b; i++) {
         ijsje.push("chocolade");
       }
-      for (let i = 0; i < c; i++) {
+      for (i = 0; i < c; i++) {
         ijsje.push("aardbei");
       }
       document.querySelector("#prijs").innerHTML = prijs;
+
       ijsScheppen();
     }
+  });
+
+  $("#clear").on("click", () => {
+    clearDisplay();
   });
 
   function containerActualValueCheck() {
@@ -143,15 +149,30 @@ $(document).ready(() => {
   containerActualValueCheck();
 
   function ijsScheppen() {
-    let arrayBolIDs = [];
+    let arrayBolIds = [];
 
     for (let i = 0; i <= ijsje.length; i++) {
-      let bolID = "#bol" + i;
-      arrayBolIDs.push(bolID);
+      let bolId = "#bol" + i;
+      arrayBolIds.push(bolId);
 
       let smaak = eval(ijsje[i]); //is eval() wel een goed idee?
-      $(arrayBolIDs[i]).css("background-color", smaak.kleurcode);
-      $(arrayBolIDs[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      $(arrayBolIds[i]).css("background-color", smaak.kleurcode);
+      $(arrayBolIds[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
     }
+  }
+
+  function clearDisplay() {
+    $("#bol0").css("background-color", "transparent");
+    $("#bol1").css("background-color", "transparent");
+    $("#bol2").css("background-color", "transparent");
+    $("#bol3").css("background-color", "transparent");
+    $("#bol4").css("background-color", "transparent");
+    $("#bol0").css("box-shadow", "none");
+    $("#bol1").css("box-shadow", "none");
+    $("#bol2").css("box-shadow", "none");
+    $("#bol3").css("box-shadow", "none");
+    $("#bol4").css("box-shadow", "none");
+
+    ijsje = [];
   }
 });
