@@ -1,7 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Anek+Devanagari&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+@import url("http://fonts.cdnfonts.com/css/chunkfive");
 
 * {
-  font-family: "Manek Devanagri", tahoma;
+  font-family: "Itim", cursive;
+  color: rgb(255, 255, 255);
 }
 
 body {
@@ -9,15 +11,27 @@ body {
   padding: 0;
 }
 
+h2 {
+  font-family: "ChunkFive", tahoma;
+  font-weight: 400;
+}
+
+.backerWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .backer {
-  background-color: hsl(181, 26.1%, 45.1%, 0.65);
-  height: 50vh;
-  min-width: 43%;
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 50px;
-  margin-left: -50px;
-  margin-top: -220px;
   z-index: -1;
+  position: absolute;
+  width: 50vw;
+  min-height: 50vh;
+  border: 4px rgba(0, 0, 0, 0.5);
+  outline: 5px solid rgb(255, 173, 20);
+  outline-offset: -15px;
 }
 
 .wallpaper {
@@ -29,19 +43,10 @@ body {
   z-index: -1;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: ((100%)/5);
-  grid-auto-rows: minmax(150px, auto);
-  row-gap: 40px;
-}
-
 .navbalk {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 1 / span 2;
-  grid-row: 1;
   background-image: url("./waffleconerepeating.png");
   background-repeat: repeat;
   height: 180px;
@@ -49,53 +54,114 @@ body {
   z-index: -1;
 }
 
-.menu {
-  grid-column: 1;
-  grid-row: 2;
-  justify-self: center;
-  margin-left: 20vw;
+.flex-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.leftSideWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 15vw;
+  margin-right: 10px;
+}
+
+.rightSideWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  margin-left: 10px;
 }
 
 .display {
-  grid-column: 1;
-  grid-row: 3;
-  justify-self: center;
-  margin-left: 20vw;
+  height: auto;
 }
 
 .invoer {
-  grid-column: 2;
-  grid-row: 2 / span 3;
-  justify-self: center;
-  margin-right: 27vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .knoppen {
-  grid-column: 2;
-  grid-row: 4;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 11vh;
+}
+
+.knop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 80px;
+  height: 80px;
+  background-color: rgba(167, 139, 89, 0.1);
+  border-radius: 50px;
+  border: 5px solid rgb(255, 173, 20, 0.8);
+}
+
+#ok,
+#clear {
+  width: 40px;
+  transition: all 0.15s ease-in-out;
+}
+
+#ok:hover,
+#clear:hover {
+  transform: scale(1.25);
+  transition: 0.15s;
+}
+
+#potjeHover:hover,
+#hoorntjeHover:hover,
+#vanilleHover:hover,
+#chocoladeHover:hover,
+#aardbeiHover:hover {
+  color: rgb(255, 173, 20);
 }
 
 .logo {
   height: 150px;
 }
 
-.container {
-  font-size: larger;
-  font-weight: bolder;
+.containers {
+  display: flex;
+  justify-content: center;
 }
 
+.smakenAntwoordenWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.smakenAntwoorden,
 .containerAntwoorden {
   display: flex;
   flex-direction: column;
-  margin-left: 60px;
+  row-gap: 2px;
+  margin-left: 40%;
 }
 
-.smakenAntwoorden {
+.smaken {
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  margin-left: 60px;
-  font-size: larger;
-  font-weight: bolder;
+}
+
+#vanilleinput,
+#chocoladeinput,
+#aardbeiinput {
+  display: none;
+  position: absolute;
+  margin-left: 5px;
+  width: 50px;
+  color: black;
+}
+
+#waarschuwing {
+  display: none;
 }
 
 .containerTitel,
@@ -104,42 +170,28 @@ body {
   justify-content: center;
 }
 
-#hoorntjeinput,
-#vanilleinput,
-#chocoladeinput,
-#aardbeiinput {
-  display: none;
-}
-
-#waarschuwing {
-  display: none;
-  font-weight: bold;
-}
-
-.menuItemLijst {
+.menuTitel {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .menuItemLijst ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0; /*verplaats list items naar link (over de lege plaats waar de bolletjes stonden)*/
-  width: 75%;
+  padding: 0; /*verplaats list items naar links (over de lege plaats waar de bolletjes stonden)*/
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .menuItemLijst ul li {
   list-style-type: none;
   margin-bottom: 10px;
-  border-bottom: black dotted 2px;
-  font-size: larger;
-  font-weight: bolder;
+  border-bottom: rgb(255, 173, 20) solid 2px;
 }
 
 .menuItemRechts {
   float: right; /*uitlijning vanaf rechtermarge*/
-  font-size: large;
 }
 
 .ijsjeDisplay {

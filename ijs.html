@@ -15,111 +15,118 @@
 <body>
   <div class="wallpaper">
 
-    <div class="grid-container">
+    <div class="navbalk"><img class="logo" src="./jon&athan.png"></div>
 
-      <div class="navbalk"><img class="logo" src="./jon&athan.png"></div>
+    <div class="backerWrapper">
+      <span class="backer"></span>
+    </div>
 
-      <div class="menu">
+    <div class="flex-container">
 
-        <h1>De smaken van vandaag:</h1>
-        <span class="menuItemLijst" id="menuItemLijst">
-          <ul>
-            <li><span class="menuItem">Vanille
-                <span class="menuItemRechts">€1.00</span></span></li>
-            <li><span class="menuItem">Chocolade</span>
-              <span class="menuItemRechts">€1.00</span>
-            </li>
-            <li><span class="menuItem">Aardbei</span>
-              <span class="menuItemRechts">€1.00</span>
-            </li>
-          </ul>
-        </span>
-        <span class="backer"></span>
+      <div class="leftSideWrapper">
+        <div class="menu">
+          <h2 class="menuTitel">Menu</h2>
+          <span class="menuItemLijst" id="menuItemLijst">
+            <ul>
+              <li><span class="menuItem">Vanille
+                  <span class="menuItemRechts">€1.00</span></span></li>
+              <li><span class="menuItem">Chocolade</span>
+                <span class="menuItemRechts">€1.00</span>
+              </li>
+              <li><span class="menuItem">Aardbei</span>
+                <span class="menuItemRechts">€1.00</span>
+              </li>
+            </ul>
+          </span>
+        </div>
 
+        <div class="display">
+          <span class="ijsjeDisplay">
+            <span class="ijsjeRowBottom">
+              <div id="bol0"></div>
+              <div id="bol1"></div>
+              <div id="bol3"></div><!-- volgorde 0,1,3,2,4 laten staan!!! -->
+            </span>
+            <span class="ijsjeRowTop">
+              <div id="bol2"></div>
+              <div id="bol4"></div>
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div class="display">
-        <span class="ijsjeDisplay">
-          <span class="ijsjeRowBottom">
-            <div id="bol0"></div>
-            <div id="bol1"></div>
-            <div id="bol3"></div><!-- volgorde 0,1,3,2,4 laten staan!!! -->
-          </span>
-          <span class="ijsjeRowTop">
-            <div id="bol2"></div>
-            <div id="bol4"></div>
-          </span>
-        </span>
-
-      </div>
-
-
-      <div class="invoer">
-        <div class="containers">
+      <div class="rightSideWrapper">
+        <div class="invoer">
           <form>
-            <h1 class="containerTitel">Potje/hoorntje</h1>
-
+            <h2 class="containerTitel">Potje/hoorntje</h2>
             <span class="containerAntwoorden">
               <span class="container">
                 <input type="radio" id="potje" value="potje" name="container" required>
-                <label for="potje">Potje</label>
+                <label for="potje" id="potjeHover">Potje</label>
               </span>
               <span class="container">
                 <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
-                <label for="hoorntje"> Hoorntje</label>
+                <label for="hoorntje" id="hoorntjeHover"> Hoorntje</label>
               </span>
             </span>
         </div>
 
-
         <div class="smaken">
-          <h1 class="smakenTitel">Smaken</h1>
-          <span class="smakenAntwoorden">
+          <h2 class="smakenTitel">Smaken</h2>
+          <div class="smakenAntwoorden">
             <span>
               <input type="checkbox" id="vanille" value="vanille" name="smaak">
-              <label for="vanille">Vanille</label>
+              <label for="vanille" id="vanilleHover">Vanille</label>
               <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
             </span>
             <span>
               <input type="checkbox" id="chocolade" value="chocolade" name="smaak">
-              <label for="chocolade">Chocolade</label>
+              <label for="chocolade" id="chocoladeHover">Chocolade</label>
               <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
             </span>
             <span>
               <input type="checkbox" id="aardbei" value="aardbei" name="smaak">
-              <label for="aardbei">Aardbei</label>
+              <label for="aardbei" id="aardbeiHover">Aardbei</label>
               <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
             </span>
+          </div>
+          </form>
         </div>
+
+        <div class="knoppen">
+          <div class="knop"><img src="./scoop.png" id="ok"></div>
+          <div class="knop"><img src="./reset.png" id="clear"></div>
+        </div>
+
+        <p id="waarschuwing">Te veel bolletjes voor je containerkeuze!</p>
+
       </div>
-
-      <div class="knoppen">
-        <div id="ok" class="okKnop">✔️</div>
-
-        <div id="clear" class="clearKnop">❌</div>
-      </div>
-
     </div>
-
-    <div class="verzendBox">
-
-
-    </div>
-
-    <div class="prijsBox" id="prijs"></div>
-
-    <p id="waarschuwing">Te veel bolletjes voor je containerkeuze!</p>
   </div>
 
 
-  </form>
-  </span>
+
+  <!-- <div class="prijsBox" id="prijs"></div> -->
+
+
+
+
+
+  </div>
+
+
+
+
   </div>
 
   </div>
   </div>
+
 
 
 </body>
+
+
+
 
 </html>

@@ -125,7 +125,7 @@ $(document).ready(() => {
       for (i = 0; i < c; i++) {
         ijsje.push("aardbei");
       }
-      document.querySelector("#prijs").innerHTML = prijs;
+      //document.querySelector("#prijs").innerHTML = prijs;
 
       ijsScheppen();
     }
