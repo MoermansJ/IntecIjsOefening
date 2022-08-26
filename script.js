@@ -127,6 +127,12 @@ $(document).ready(() => {
       }
       //document.querySelector("#prijs").innerHTML = prijs;
 
+      if (containerKeuze === "hoorntje") {
+        $("#hoorntjeDisplay").show();
+      } else if (containerKeuze === "potje") {
+        $("#potjeDisplay").show();
+      }
+
       ijsScheppen();
     }
   });
@@ -172,6 +178,8 @@ $(document).ready(() => {
     $("#bol2").css("box-shadow", "none");
     $("#bol3").css("box-shadow", "none");
     $("#bol4").css("box-shadow", "none");
+    $("#potjeDisplay").css("display", "none");
+    $("#hoorntjeDisplay").css("display", "none");
 
     ijsje = [];
   }

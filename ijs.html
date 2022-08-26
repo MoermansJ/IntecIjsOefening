@@ -15,7 +15,7 @@
 <body>
   <div class="wallpaper">
 
-    <div class="navbalk"><img class="logo" src="./jon&athan.png"></div>
+    <div class="navbalk"><img class="logo" src="img/jon&athan.png"></div>
 
     <div class="backerWrapper">
       <span class="backer"></span>
@@ -45,12 +45,18 @@
             <span class="ijsjeRowBottom">
               <div id="bol0"></div>
               <div id="bol1"></div>
-              <div id="bol3"></div><!-- volgorde 0,1,3,2,4 laten staan!!! -->
+              <div id="bol3"></div>
             </span>
             <span class="ijsjeRowTop">
               <div id="bol2"></div>
               <div id="bol4"></div>
             </span>
+          </span>
+
+
+          <span class="containerDisplay">
+            <img src="img/hoorntje.png" id="hoorntjeDisplay">
+            <img src="img/potje.png" id="potjeDisplay">
           </span>
         </div>
       </div>
@@ -61,12 +67,12 @@
             <h2 class="containerTitel">Potje/hoorntje</h2>
             <span class="containerAntwoorden">
               <span class="container">
-                <input type="radio" id="potje" value="potje" name="container" required>
-                <label for="potje" id="potjeHover">Potje</label>
+                <input type="radio" id="potje" value="potje" name="container" class="goldHover" required>
+                <label for="potje" class="goldHover">Potje</label>
               </span>
               <span class="container">
-                <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
-                <label for="hoorntje" id="hoorntjeHover"> Hoorntje</label>
+                <input type="radio" id="hoorntje" value="hoorntje" name="container" class="goldHover" required>
+                <label for="hoorntje" class="goldHover"> Hoorntje</label>
               </span>
             </span>
         </div>
@@ -75,28 +81,31 @@
           <h2 class="smakenTitel">Smaken</h2>
           <div class="smakenAntwoorden">
             <span>
-              <input type="checkbox" id="vanille" value="vanille" name="smaak">
-              <label for="vanille" id="vanilleHover">Vanille</label>
+              <input type="checkbox" id="vanille" value="vanille" name="smaak" class="goldHover">
+              <label for="vanille" class="goldHover">Vanille</label>
               <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
             </span>
             <span>
-              <input type="checkbox" id="chocolade" value="chocolade" name="smaak">
-              <label for="chocolade" id="chocoladeHover">Chocolade</label>
+              <input type="checkbox" id="chocolade" value="chocolade" name="smaak" class="goldHover">
+              <label for="chocolade" class="goldHover">Chocolade</label>
               <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
             </span>
             <span>
-              <input type="checkbox" id="aardbei" value="aardbei" name="smaak">
-              <label for="aardbei" id="aardbeiHover">Aardbei</label>
+              <input type="checkbox" id="aardbei" value="aardbei" name="smaak" class="goldHover">
+              <label for="aardbei" class="goldHover">Aardbei</label>
               <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
             </span>
           </div>
           </form>
         </div>
 
-        <div class="knoppen">
-          <div class="knop"><img src="./scoop.png" id="ok"></div>
-          <div class="knop"><img src="./reset.png" id="clear"></div>
-        </div>
+
+        <span class="knoppen">
+          <span class="knop"><img src="img/button.png" id="ijsKnopGroen"><img src="img/scoop.png" id="ok"></span>
+          <span class="knop"><img src="img/button.png" id="ijsKnopRood"><img src="img/reset.png" id="clear"></span>
+          <span class="knop"><img src="img/button.png" id="ijsKnopBlauw"><img src="img/addToCart.svg"
+              id="addToCart"></span>
+        </span>
 
         <p id="waarschuwing">Te veel bolletjes voor je containerkeuze!</p>
 
