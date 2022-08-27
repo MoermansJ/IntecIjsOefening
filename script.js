@@ -5,6 +5,8 @@ $(document).ready(() => {
   let max = 0;
   let containerKeuze = "";
   let ijsje = [];
+  let arrayBolIds = [];
+  let cart = [];
   let prijs = 0;
 
   const vanille = {
@@ -141,6 +143,14 @@ $(document).ready(() => {
     clearDisplay();
   });
 
+  $("#addToCart").on("click", () => {
+    arrayBolIds.unshift(containerKeuze);
+    cart.push(arrayBolIds);
+    arrayBolIds = [];
+    alert(cart);
+    alert(arrayBolIds);
+  });
+
   function containerActualValueCheck() {
     //checkt actuele containerwaarde elke 50ms
     let som = a + b + c;
@@ -155,9 +165,7 @@ $(document).ready(() => {
   containerActualValueCheck();
 
   function ijsScheppen() {
-    let arrayBolIds = [];
-
-    for (let i = 0; i <= ijsje.length; i++) {
+    for (let i = 0; i < ijsje.length; i++) {
       let bolId = "#bol" + i;
       arrayBolIds.push(bolId);
 
@@ -180,7 +188,20 @@ $(document).ready(() => {
     $("#bol4").css("box-shadow", "none");
     $("#potjeDisplay").css("display", "none");
     $("#hoorntjeDisplay").css("display", "none");
+    $();
 
+    a = 0;
+    b = 0;
+    c = 0;
+    containerKeuze = "";
     ijsje = [];
   }
 });
+
+function createDisplayItem() {
+  const displayItem1 = {
+    bolletjes,
+    smaken,
+    container,
+  };
+}

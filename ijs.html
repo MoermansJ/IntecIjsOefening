@@ -19,9 +19,10 @@
 
     <div class="backerWrapper">
       <span class="backer"></span>
+      <div class="backerCart"></div>
     </div>
 
-    <div class="flex-container">
+    <div class="flex-container-top">
 
       <div class="leftSideWrapper">
         <div class="menu">
@@ -67,12 +68,12 @@
             <h2 class="containerTitel">Potje/hoorntje</h2>
             <span class="containerAntwoorden">
               <span class="container">
-                <input type="radio" id="potje" value="potje" name="container" class="goldHover" required>
+                <input type="radio" id="potje" value="potje" name="container" required>
                 <label for="potje" class="goldHover">Potje</label>
               </span>
               <span class="container">
-                <input type="radio" id="hoorntje" value="hoorntje" name="container" class="goldHover" required>
-                <label for="hoorntje" class="goldHover"> Hoorntje</label>
+                <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
+                <label for="hoorntje" class="goldHover">Hoorntje</label>
               </span>
             </span>
         </div>
@@ -81,24 +82,23 @@
           <h2 class="smakenTitel">Smaken</h2>
           <div class="smakenAntwoorden">
             <span>
-              <input type="checkbox" id="vanille" value="vanille" name="smaak" class="goldHover">
+              <input type="checkbox" id="vanille" value="vanille" name="smaak">
               <label for="vanille" class="goldHover">Vanille</label>
               <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
             </span>
             <span>
-              <input type="checkbox" id="chocolade" value="chocolade" name="smaak" class="goldHover">
+              <input type="checkbox" id="chocolade" value="chocolade" name="smaak">
               <label for="chocolade" class="goldHover">Chocolade</label>
               <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
             </span>
             <span>
-              <input type="checkbox" id="aardbei" value="aardbei" name="smaak" class="goldHover">
+              <input type="checkbox" id="aardbei" value="aardbei" name="smaak">
               <label for="aardbei" class="goldHover">Aardbei</label>
               <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
             </span>
           </div>
           </form>
         </div>
-
 
         <span class="knoppen">
           <span class="knop"><img src="img/button.png" id="ijsKnopGroen"><img src="img/scoop.png" id="ok"></span>
@@ -107,10 +107,16 @@
               id="addToCart"></span>
         </span>
 
-        <p id="waarschuwing">Te veel bolletjes voor je containerkeuze!</p>
-
+        <div class="waarschuwingWrapper">
+          <p id="waarschuwing">Te veel bolletjes voor een hoorntje!</p>
+        </div>
       </div>
     </div>
+
+    <div class="flex-container-bottom">
+      <div class="cartDisplay"></div>
+    </div>
+
   </div>
 
 
