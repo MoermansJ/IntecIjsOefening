@@ -253,11 +253,11 @@ h2 {
   float: right; /*uitlijning vanaf rechtermarge*/
 }
 
-#bol0,
-#bol1,
-#bol2,
-#bol3,
-#bol4 {
+#bolSet0-0,
+#bolSet0-1,
+#bolSet0-2,
+#bolSet0-3,
+#bolSet0-4 {
   display: none;
   width: 50px;
   height: 50px;
@@ -334,11 +334,23 @@ h2 {
   justify-content: center;
 }
 
-#bolCart0,
-#bolCart1,
-#bolCart2,
-#bolCart3,
-#bolCart4 {
+#potjeCartDisplay {
+  width: 153px;
+  display: none;
+  z-index: 1;
+}
+
+#hoorntjeCartDisplay {
+  width: 100px;
+  display: none;
+  z-index: 1;
+}
+
+#bolSet1-0,
+#bolSet1-1,
+#bolSet1-2,
+#bolSet1-3,
+#bolSet1-4 {
   width: 50px;
   height: 50px;
   border-radius: 50px;

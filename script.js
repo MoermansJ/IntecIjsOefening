@@ -10,7 +10,8 @@ $(document).ready(() => {
   let newIjsje;
   let cart = [];
   let prijs = 0;
-  let tempArr = []; //altijd type "[]" zetten bij het initialiseren van een array!
+  let bolCartIdArray = []; //altijd type "[]" zetten bij het declareren + initialiseren van een array!
+  let bolSet = 0;
 
   containerActualValueCheck();
 
@@ -52,22 +53,20 @@ $(document).ready(() => {
 
   $("#hoorntje").on("click", () => {
     max = 3;
-    containerKeuze = "hoorntje";
-    $("#bol0").show();
-    $("#bol1").show();
-    $("#bol2").show();
-    $("#bol3").hide();
-    $("#bol4").hide();
+    $("#bolSet0-0").show();
+    $("#bolSet0-1").show();
+    $("#bolSet0-2").show();
+    $("#bolSet0-3").hide();
+    $("#bolSet0-4").hide();
   });
 
   $("#potje").on("click", () => {
     max = 5;
-    containerKeuze = "potje";
-    $("#bol0").show();
-    $("#bol1").show();
-    $("#bol2").show();
-    $("#bol3").show();
-    $("#bol4").show();
+    $("#bolSet0-0").show();
+    $("#bolSet0-1").show();
+    $("#bolSet0-2").show();
+    $("#bolSet0-3").show();
+    $("#bolSet0-4").show();
   });
 
   $("#vanille").click(() => {
@@ -114,22 +113,17 @@ $(document).ready(() => {
 
   $("#ok").on("click", () => {
     som = a + b + c;
+    /*
     if (som === 0 || containerKeuze == false) {
       alert("Je bent iets vergeten in te vullen in het formulier!");
-    } else if (som > max) {
+    } else */
+    if (som > max) {
       alert(
         "Maximum " + max + " bolletjes ijs voor een " + containerKeuze + "!"
       );
     } else {
       //document.querySelector("#prijs").innerHTML = prijs;
 
-      if (containerKeuze === "hoorntje") {
-        $("#hoorntjeDisplay").show();
-      } else if (containerKeuze === "potje") {
-        $("#potjeDisplay").show();
-      }
-
-      createIjsjeObject();
       ijsScheppen();
     }
   });
@@ -146,7 +140,7 @@ $(document).ready(() => {
   function containerActualValueCheck() {
     //checkt actuele containerwaarde elke 50ms
     let som = a + b + c;
-    if (som > max && containerKeuze != "") {
+    if (som > max || containerKeuze != "") {
       $("#waarschuwing").show();
     } else {
       $("#waarschuwing").hide();
@@ -156,16 +150,16 @@ $(document).ready(() => {
   }
 
   function clearDisplay() {
-    $("#bol0").css("background-color", "transparent");
-    $("#bol1").css("background-color", "transparent");
-    $("#bol2").css("background-color", "transparent");
-    $("#bol3").css("background-color", "transparent");
-    $("#bol4").css("background-color", "transparent");
-    $("#bol0").css("box-shadow", "none");
-    $("#bol1").css("box-shadow", "none");
-    $("#bol2").css("box-shadow", "none");
-    $("#bol3").css("box-shadow", "none");
-    $("#bol4").css("box-shadow", "none");
+    $("#bolSet0-0").css("background-color", "transparent");
+    $("#bolSet0-0").css("box-shadow", "none");
+    $("#bolSet0-1").css("background-color", "transparent");
+    $("#bolSet0-1").css("box-shadow", "none");
+    $("#bolSet0-2").css("background-color", "transparent");
+    $("#bolSet0-2").css("box-shadow", "none");
+    $("#bolSet0-3").css("background-color", "transparent");
+    $("#bolSet0-3").css("box-shadow", "none");
+    $("#bolSet0-4").css("background-color", "transparent");
+    $("#bolSet0-4").css("box-shadow", "none");
     $("#potjeDisplay").css("display", "none");
     $("#hoorntjeDisplay").css("display", "none");
 
@@ -179,7 +173,7 @@ $(document).ready(() => {
 
   function createArrayBolIds() {
     for (let i = 0; i < smaakArray.length; i++) {
-      let bolId = "#bol" + i;
+      let bolId = "#bolSet" + bolSet + "-" + i;
       arrayBolIds.push(bolId);
     }
 
@@ -201,23 +195,27 @@ $(document).ready(() => {
     return smaakArray;
   }
 
-  function createIjsjeObject() {
+  function getContainerKeuze() {
+    return document.querySelector('input[name="container"]:checked').value;
+  }
+
+  function createIjsjeObject(SArr, BArr, Ck) {
     return {
-      _smaakArray: [],
+      _smaakArray: SArr,
       set smaakArray(val) {
         this._smaakArray = val;
       },
       get smaakArray() {
         return this._smaakArray;
       },
-      _bolArray: [],
+      _bolArray: BArr,
       set bolArray(val) {
         this._bolArray = val;
       },
       get bolArray() {
         return this._bolArray;
       },
-      _container: "",
+      _container: Ck,
       set container(val) {
         this._container = val;
       },
@@ -228,16 +226,20 @@ $(document).ready(() => {
   }
 
   function ijsScheppen() {
-    newIjsje = createIjsjeObject();
-    newIjsje.smaakArray = createSmaakArray();
-    newIjsje.bolArray = createArrayBolIds();
-    newIjsje.container = containerKeuze;
+    newIjsje = createIjsjeObject(
+      createSmaakArray(),
+      createArrayBolIds(),
+      getContainerKeuze()
+    );
 
     for (let i = 0; i < newIjsje.bolArray.length; i++) {
       let smaak = eval(newIjsje.smaakArray[i]); //is eval() wel een goed idee?
       $(arrayBolIds[i]).css("background-color", smaak.kleurcode);
       $(arrayBolIds[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
     }
+
+    let containerDisplay = "#" + newIjsje.container + "Display";
+    $(containerDisplay).show();
   }
 
   function addToCart() {
@@ -246,11 +248,14 @@ $(document).ready(() => {
     cart.push(newIjsje);
 
     for (let i = 0; i < newIjsje.bolArray.length; i++) {
-      let bolCartId = "#bolCart" + i;
-      tempArr.push(bolCartId);
+      let bolCartId = "#bolSet1-" + i; //bolSet dynamisch maken!!
+      bolCartIdArray.push(bolCartId);
     }
 
     clearDisplay();
+
+    let containerCartDisplay = "#" + newIjsje.container + "CartDisplay";
+    $(containerCartDisplay).show();
 
     /*
     for (const [key, value] of Object.entries(cart[0])) {
@@ -262,9 +267,12 @@ $(document).ready(() => {
   function displayCartItem() {
     let currentCartItem = cart[0];
     for (let i = 0; i < currentCartItem.bolArray.length; i++) {
-      let smaak = eval(currentCartItem.smaakArray[i]); //is eval() wel een goed idee?
-      $(tempArr[i]).css("background-color", smaak.kleurcode);
-      $(tempArr[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      let smaak = eval(currentCartItem.smaakArray[i]);
+      $(bolCartIdArray[i]).css("background-color", smaak.kleurcode);
+      $(bolCartIdArray[i]).css(
+        "box-shadow",
+        "1px 1px inset rgba(0, 0, 0, 0.733"
+      );
     }
   }
 });
