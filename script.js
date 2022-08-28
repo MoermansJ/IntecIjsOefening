@@ -2,12 +2,17 @@ $(document).ready(() => {
   let a = 0;
   let b = 0;
   let c = 0;
+  let som = 0;
   let max = 0;
   let containerKeuze = "";
-  let ijsje = [];
   let arrayBolIds = [];
+  let smaakArray = [];
+  let newIjsje;
   let cart = [];
   let prijs = 0;
+  let tempArr = []; //altijd type "[]" zetten bij het initialiseren van een array!
+
+  containerActualValueCheck();
 
   const vanille = {
     _naam: "vanille",
@@ -108,25 +113,14 @@ $(document).ready(() => {
   });
 
   $("#ok").on("click", () => {
-    let som = a + b + c;
-    if (som === 0 && containerKeuze == false) {
+    som = a + b + c;
+    if (som === 0 || containerKeuze == false) {
       alert("Je bent iets vergeten in te vullen in het formulier!");
     } else if (som > max) {
       alert(
         "Maximum " + max + " bolletjes ijs voor een " + containerKeuze + "!"
       );
     } else {
-      let i = 0;
-      for (i = 0; i < a; i++) {
-        ijsje.push("vanille");
-        prijs += vanille.prijs;
-      }
-      for (i = 0; i < b; i++) {
-        ijsje.push("chocolade");
-      }
-      for (i = 0; i < c; i++) {
-        ijsje.push("aardbei");
-      }
       //document.querySelector("#prijs").innerHTML = prijs;
 
       if (containerKeuze === "hoorntje") {
@@ -135,6 +129,7 @@ $(document).ready(() => {
         $("#potjeDisplay").show();
       }
 
+      createIjsjeObject();
       ijsScheppen();
     }
   });
@@ -143,12 +138,9 @@ $(document).ready(() => {
     clearDisplay();
   });
 
-  $("#addToCart").on("click", () => {
-    arrayBolIds.unshift(containerKeuze);
-    cart.push(arrayBolIds);
-    arrayBolIds = [];
-    alert(cart);
-    alert(arrayBolIds);
+  $("#toevoegen").on("click", () => {
+    addToCart();
+    displayCartItem();
   });
 
   function containerActualValueCheck() {
@@ -161,18 +153,6 @@ $(document).ready(() => {
     }
 
     setTimeout(containerActualValueCheck, 50);
-  }
-  containerActualValueCheck();
-
-  function ijsScheppen() {
-    for (let i = 0; i < ijsje.length; i++) {
-      let bolId = "#bol" + i;
-      arrayBolIds.push(bolId);
-
-      let smaak = eval(ijsje[i]); //is eval() wel een goed idee?
-      $(arrayBolIds[i]).css("background-color", smaak.kleurcode);
-      $(arrayBolIds[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
-    }
   }
 
   function clearDisplay() {
@@ -188,20 +168,103 @@ $(document).ready(() => {
     $("#bol4").css("box-shadow", "none");
     $("#potjeDisplay").css("display", "none");
     $("#hoorntjeDisplay").css("display", "none");
-    $();
 
     a = 0;
     b = 0;
     c = 0;
     containerKeuze = "";
-    ijsje = [];
+    smaakArray = [];
+    arrayBolIds = [];
+  }
+
+  function createArrayBolIds() {
+    for (let i = 0; i < smaakArray.length; i++) {
+      let bolId = "#bol" + i;
+      arrayBolIds.push(bolId);
+    }
+
+    return arrayBolIds;
+  }
+
+  function createSmaakArray() {
+    let i;
+    for (i = 0; i < a; i++) {
+      smaakArray.push("vanille");
+    }
+    for (i = 0; i < b; i++) {
+      smaakArray.push("chocolade");
+    }
+    for (i = 0; i < c; i++) {
+      smaakArray.push("aardbei");
+    }
+
+    return smaakArray;
+  }
+
+  function createIjsjeObject() {
+    return {
+      _smaakArray: [],
+      set smaakArray(val) {
+        this._smaakArray = val;
+      },
+      get smaakArray() {
+        return this._smaakArray;
+      },
+      _bolArray: [],
+      set bolArray(val) {
+        this._bolArray = val;
+      },
+      get bolArray() {
+        return this._bolArray;
+      },
+      _container: "",
+      set container(val) {
+        this._container = val;
+      },
+      get container() {
+        return this._container;
+      },
+    };
+  }
+
+  function ijsScheppen() {
+    newIjsje = createIjsjeObject();
+    newIjsje.smaakArray = createSmaakArray();
+    newIjsje.bolArray = createArrayBolIds();
+    newIjsje.container = containerKeuze;
+
+    for (let i = 0; i < newIjsje.bolArray.length; i++) {
+      let smaak = eval(newIjsje.smaakArray[i]); //is eval() wel een goed idee?
+      $(arrayBolIds[i]).css("background-color", smaak.kleurcode);
+      $(arrayBolIds[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+    }
+  }
+
+  function addToCart() {
+    //aos fade-left toevoegen on click?
+
+    cart.push(newIjsje);
+
+    for (let i = 0; i < newIjsje.bolArray.length; i++) {
+      let bolCartId = "#bolCart" + i;
+      tempArr.push(bolCartId);
+    }
+
+    clearDisplay();
+
+    /*
+    for (const [key, value] of Object.entries(cart[0])) {
+      alert(`${key} = ${value}`);
+    }
+    */
+  }
+
+  function displayCartItem() {
+    let currentCartItem = cart[0];
+    for (let i = 0; i < currentCartItem.bolArray.length; i++) {
+      let smaak = eval(currentCartItem.smaakArray[i]); //is eval() wel een goed idee?
+      $(tempArr[i]).css("background-color", smaak.kleurcode);
+      $(tempArr[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+    }
   }
 });
-
-function createDisplayItem() {
-  const displayItem1 = {
-    bolletjes,
-    smaken,
-    container,
-  };
-}

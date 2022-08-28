@@ -155,12 +155,12 @@ h2 {
 #ijsKnopBlauw {
   width: 90px;
   position: absolute;
-  filter: hue-rotate(260deg);
+  filter: hue-rotate(230deg);
 }
 
 #ok,
 #clear,
-#addToCart {
+#toevoegen {
   width: 40px;
   transition: all 0.15s ease-in-out;
   z-index: 1;
@@ -168,7 +168,7 @@ h2 {
 
 #ok:hover,
 #clear:hover,
-#addToCart:hover {
+#toevoegen:hover {
   transform: scale(1.25);
   transition: 0.15s;
 }
@@ -301,7 +301,46 @@ h2 {
 }
 
 .cartDisplay {
-  background-color: red;
   width: 100px;
   height: 100px;
+}
+
+.ijsjeCartDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 170px;
+  width: 200px;
+  border-radius: 50px;
+  margin-top: 60px;
+}
+
+.ijsjeCartRowTop {
+  display: flex;
+  position: absolute;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.ijsjeCartRowBottom {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  justify-content: center;
+}
+
+.containerCartDisplay {
+  display: flex;
+  justify-content: center;
+}
+
+#bolCart0,
+#bolCart1,
+#bolCart2,
+#bolCart3,
+#bolCart4 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: transparent;
 }
