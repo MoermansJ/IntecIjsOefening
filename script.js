@@ -5,7 +5,6 @@ $(document).ready(() => {
   let som = 0;
   let max = 0;
   let containerKeuze = "";
-  let arrayBolIds = [];
   let smaakArray = [];
   let newIjsje;
   let cart = [];
@@ -171,14 +170,16 @@ $(document).ready(() => {
     arrayBolIds = [];
   }
 
+  /*
   function createArrayBolIds() {
     for (let i = 0; i < smaakArray.length; i++) {
-      let bolId = "#bolSet" + bolSet + "-" + i;
+      let bolId = "#bolSet0" + "-" + i;
       arrayBolIds.push(bolId);
     }
 
     return arrayBolIds;
   }
+  */
 
   function createSmaakArray() {
     let i;
@@ -199,7 +200,7 @@ $(document).ready(() => {
     return document.querySelector('input[name="container"]:checked').value;
   }
 
-  function createIjsjeObject(SArr, BArr, Ck) {
+  function createIjsjeObject(SArr, Ck) {
     return {
       _smaakArray: SArr,
       set smaakArray(val) {
@@ -207,13 +208,6 @@ $(document).ready(() => {
       },
       get smaakArray() {
         return this._smaakArray;
-      },
-      _bolArray: BArr,
-      set bolArray(val) {
-        this._bolArray = val;
-      },
-      get bolArray() {
-        return this._bolArray;
       },
       _container: Ck,
       set container(val) {
@@ -226,16 +220,13 @@ $(document).ready(() => {
   }
 
   function ijsScheppen() {
-    newIjsje = createIjsjeObject(
-      createSmaakArray(),
-      createArrayBolIds(),
-      getContainerKeuze()
-    );
+    newIjsje = createIjsjeObject(createSmaakArray(), getContainerKeuze());
 
-    for (let i = 0; i < newIjsje.bolArray.length; i++) {
-      let smaak = eval(newIjsje.smaakArray[i]); //is eval() wel een goed idee?
-      $(arrayBolIds[i]).css("background-color", smaak.kleurcode);
-      $(arrayBolIds[i]).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+    for (let i = 0; i < newIjsje.smaakArray.length; i++) {
+      let bolId = "#bolSet0" + "-" + i;
+      let smaak = eval(newIjsje.smaakArray[i]);
+      $(bolId).css("background-color", smaak.kleurcode);
+      $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
     }
 
     let containerDisplay = "#" + newIjsje.container + "Display";
@@ -243,36 +234,71 @@ $(document).ready(() => {
   }
 
   function addToCart() {
-    //aos fade-left toevoegen on click?
-
+    let cartIndex = cart.length;
     cart.push(newIjsje);
 
-    for (let i = 0; i < newIjsje.bolArray.length; i++) {
-      let bolCartId = "#bolSet1-" + i; //bolSet dynamisch maken!!
-      bolCartIdArray.push(bolCartId);
-    }
+    let cartRow = document.createElement("div");
+    let cartDisplay = document.querySelector(".cartDisplay");
+    let cartRowContents = `    
+    <div class="display">
+      <span class="ijsjeDisplay">
+        <span class="ijsjeRowBottom">
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
+        </span>
+        <span class="ijsjeRowTop">
+         <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
+         <div class="bolCartSet" id="bolCartSet${cartIndex}-4"></div>
+        </span>
+      </span>`;
+
+    cartRow.innerHTML = cartRowContents;
+    cartDisplay.append(cartRow);
+    cartRow.classList.add("cartDisplay");
 
     clearDisplay();
-
-    let containerCartDisplay = "#" + newIjsje.container + "CartDisplay";
-    $(containerCartDisplay).show();
-
-    /*
-    for (const [key, value] of Object.entries(cart[0])) {
-      alert(`${key} = ${value}`);
-    }
-    */
   }
 
+  /*
+  function updateCartBolId() {
+    for (let i = 1; i < cart.length; i++) {
+      for (let j = 0; j < cart[i].bolArray.length; j++) {
+        let bolId = "#bolSet" + i + "-" + j;
+        cart[i].bolArray[j] = bolId;
+      }
+    }
+  }
+  */
+
   function displayCartItem() {
-    let currentCartItem = cart[0];
-    for (let i = 0; i < currentCartItem.bolArray.length; i++) {
-      let smaak = eval(currentCartItem.smaakArray[i]);
-      $(bolCartIdArray[i]).css("background-color", smaak.kleurcode);
-      $(bolCartIdArray[i]).css(
-        "box-shadow",
-        "1px 1px inset rgba(0, 0, 0, 0.733"
-      );
+    bolCartIdArray = [];
+
+    for (let i = 0; i < cart.length; i++) {
+      let currentCartItem = cart[i];
+
+      for (let j = 0; j < currentCartItem.smaakArray.length; j++) {
+        let bolId = "#bolCartSet" + i + "-" + j;
+        let smaak = eval(currentCartItem.smaakArray[j]);
+        $(bolId).css("background-color", smaak.kleurcode);
+        $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      }
     }
   }
 });
+
+/*
+  for (const [key, value] of Object.entries(cart[i])) {
+        alert(`${key} = ${value}`);
+      }
+
+
+for (let i = 0; i < smaakArray.length; i++) {
+  let bolId = "#bolSet0" + "-" + i;
+  arrayBolIds.push(bolId);
+}
+
+for (const [key, value] of Object.entries(cart[0])) {
+  alert(`${key} = ${value}`);
+}
+*/
