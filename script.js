@@ -10,7 +10,6 @@ $(document).ready(() => {
   let cart = [];
   let prijs = 0;
   let bolCartIdArray = []; //altijd type "[]" zetten bij het declareren + initialiseren van een array!
-  let bolSet = 0;
 
   containerActualValueCheck();
 
@@ -170,17 +169,6 @@ $(document).ready(() => {
     arrayBolIds = [];
   }
 
-  /*
-  function createArrayBolIds() {
-    for (let i = 0; i < smaakArray.length; i++) {
-      let bolId = "#bolSet0" + "-" + i;
-      arrayBolIds.push(bolId);
-    }
-
-    return arrayBolIds;
-  }
-  */
-
   function createSmaakArray() {
     let i;
     for (i = 0; i < a; i++) {
@@ -240,38 +228,28 @@ $(document).ready(() => {
     let cartRow = document.createElement("div");
     let cartDisplay = document.querySelector(".cartDisplay");
     let cartRowContents = `    
-    <div class="display">
-      <span class="ijsjeDisplay">
-        <span class="ijsjeRowBottom">
+      <div class="ijsjeDisplay">
+        <div class="ijsjeRowBottom">
           <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
           <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
           <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
-        </span>
-        <span class="ijsjeRowTop">
+        </div>
+        <div class="ijsjeRowTop">
          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
          <div class="bolCartSet" id="bolCartSet${cartIndex}-4"></div>
-        </span>
-      </span>`;
+        </div>
+      </div>
+
+      <div class="containerCartDisplay">
+        <img src="img/hoorntje.png" id="hoorntjeCart${cartIndex}Display" class="hoorntjeCartDisplay">
+        <img src="img/potje.png" id="potjeCart${cartIndex}Display" class="potjeCartDisplay">
+      </div>`;
 
     cartRow.innerHTML = cartRowContents;
     cartDisplay.append(cartRow);
     cartRow.classList.add("cartDisplay");
 
-    clearDisplay();
-  }
-
-  /*
-  function updateCartBolId() {
-    for (let i = 1; i < cart.length; i++) {
-      for (let j = 0; j < cart[i].bolArray.length; j++) {
-        let bolId = "#bolSet" + i + "-" + j;
-        cart[i].bolArray[j] = bolId;
-      }
-    }
-  }
-  */
-
-  function displayCartItem() {
+    //code voor bolletjes in cart te printen
     bolCartIdArray = [];
 
     for (let i = 0; i < cart.length; i++) {
@@ -284,6 +262,21 @@ $(document).ready(() => {
         $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
       }
     }
+
+    //code voor hoorntje/potje in cart te printen
+    let a = "#hoorntjeCart" + cartIndex + "Display";
+    let b = "#potjeCart" + cartIndex + "Display";
+
+    $(a).hide();
+    $(b).hide();
+
+    if (cart[cartIndex].container == "hoorntje") {
+      $(a).show();
+    } else {
+      $(b).show();
+    }
+
+    clearDisplay();
   }
 });
 
