@@ -237,29 +237,29 @@ $(document).ready(() => {
     if (cart[cartIndex].container == "hoorntje") {
       cartRowContents = `    
       <div class="ijsjeCartDisplay">
-        <div class="ijsjeCartRowTop">
+        <div class="ijsjeRowTop">
           <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
         </div>
-        <div class="ijsjeCartRowBottom">      
+        <div class="ijsjeRowBottom">      
           <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
           <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
         </div>
 
         <div class="containerCartDisplay">
-          <img src="img/${cart[cartIndex].container}.png" id="${cart[cartIndex].container}Cart${cartIndex}Display" class="${cart[cartIndex].container}CartDisplay">
+          <img src="img/hoorntje.png" id="hoorntjeCart${cartIndex}Display" class="hoorntjeCartDisplay">
         </div>
       </div>`;
     } else {
       cartRowContents = `    
       <div class="ijsjeCartDisplay">
-        <div class="ijsjeCartRowTop">
-          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
+        <div class="ijsjeRowTop">
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
           <div class="bolCartSet" id="bolCartSet${cartIndex}-4"></div>
         </div>
-        <div class="ijsjeCartRowBottom">      
+        <div class="ijsjeRowBottom">      
           <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
           <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
-          <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
         </div>
       </div>
       <div class="containerCartDisplay">
@@ -340,5 +340,40 @@ for (const [key, value] of Object.entries(cart[0])) {
         $(bolId).css("background-color", smaak.kleurcode);
         $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
       }
+    }
+    */
+
+/*
+        if (cart[cartIndex].container == "hoorntje") {
+      cartRowContents = `    
+      <div class="ijsjeCartDisplay">
+        <div class="ijsjeCartRowTop">
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
+        </div>
+        <div class="ijsjeCartRowBottom">      
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
+        </div>
+
+        <div class="containerCartDisplay">
+          <img src="img/${cart[cartIndex].container}.png" id="${cart[cartIndex].container}Cart${cartIndex}Display" class="${cart[cartIndex].container}CartDisplay">
+        </div>
+      </div>`;
+    } else {
+      cartRowContents = `    
+      <div class="ijsjeCartDisplay">
+        <div class="ijsjeCartRowTop">
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-4"></div>
+        </div>
+        <div class="ijsjeCartRowBottom">      
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
+        </div>
+      </div>
+      <div class="containerCartDisplay">
+        <img src="img/${cart[cartIndex].container}.png" id="${cart[cartIndex].container}Cart${cartIndex}Display" class="${cart[cartIndex].container}CartDisplay">
+      </div>`;
     }
     */

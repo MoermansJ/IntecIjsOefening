@@ -37,18 +37,6 @@ h2 {
   backdrop-filter: blur(5px);
 }
 
-.backerCart {
-  position: absolute;
-  z-index: -1;
-  width: 150px;
-  height: 40vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 50px;
-  outline: 5px solid rgb(255, 173, 20);
-  outline-offset: -15px;
-  backdrop-filter: blur(5px);
-}
-
 .flex-container-cart {
   position: absolute;
   margin-left: 84.5vw;
@@ -297,10 +285,25 @@ h2 {
   justify-content: center;
 }
 
+.backerCart {
+  position: absolute;
+  z-index: -1;
+  width: 150px;
+  height: 40vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+  outline: 5px solid rgb(255, 173, 20);
+  outline-offset: -15px;
+  backdrop-filter: blur(5px);
+}
+
 .cartRow {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+  height: 97px;
 }
 
 .containerCartDisplay {
@@ -311,11 +314,13 @@ h2 {
 .potjeCartDisplay {
   width: 76px;
   z-index: 1;
+  position: absolute;
 }
 
 .hoorntjeCartDisplay {
-  width: 25px;
+  width: 50px;
   z-index: 1;
+  position: absolute;
 }
 
 .ijsjeCartDisplay {
