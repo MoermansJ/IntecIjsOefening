@@ -32,7 +32,6 @@ h2 {
   max-width: 800px;
   min-height: 490px;
   height: 40vh;
-  border: 4px rgba(0, 0, 0, 0.5);
   outline: 5px solid rgb(255, 173, 20);
   outline-offset: -15px;
   backdrop-filter: blur(5px);
@@ -45,7 +44,6 @@ h2 {
   height: 40vh;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 50px;
-  border: 4px rgba(0, 0, 0, 0.5);
   outline: 5px solid rgb(255, 173, 20);
   outline-offset: -15px;
   backdrop-filter: blur(5px);
@@ -189,10 +187,12 @@ h2 {
 #toevoegen:hover {
   transform: scale(1.25);
   transition: 0.15s;
+  cursor: pointer;
 }
 
 .goldHover:hover {
   color: rgb(255, 173, 20);
+  cursor: pointer;
 }
 
 .logo {
@@ -326,4 +326,29 @@ h2 {
   width: 25px;
   height: 25px;
   border-radius: 50px;
+}
+
+.github-container {
+  position: absolute;
+  margin-top: 31.5vh;
+  margin-left: 20px;
+}
+
+.github-container img {
+  filter: sepia(100%);
+}
+
+.github-container a {
+  text-decoration: none;
+}
+
+.github-container a:hover {
+  color: rgb(255, 173, 20);
+}
+
+#github-image {
+  height: 20px;
+  margin-right: 5px;
+  filter: brightness(0.95) invert(0.7) sepia(0.5) hue-rotate(-5deg)
+    saturate(800%);
 }

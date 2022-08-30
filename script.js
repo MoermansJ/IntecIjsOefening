@@ -1,3 +1,6 @@
+//The code written below is far from perfect and can be optimised in various aspects.
+//This being my first project assignment it will serve as a point of reference as I grow and develop my skills as a web developer.
+
 $(document).ready(() => {
   let a = 0;
   let b = 0;
@@ -9,7 +12,6 @@ $(document).ready(() => {
   let newIjsje;
   let cart = [];
   let prijs = 0;
-  let bolCartIdArray = []; //altijd type "[]" zetten bij het declareren + initialiseren van een array!
 
   containerActualValueCheck();
 
@@ -225,33 +227,34 @@ $(document).ready(() => {
     let cartIndex = cart.length;
     cart.push(newIjsje);
 
+    //code om HTML tags aan te maken van de items in cart
     let cartRow = document.createElement("div");
     let cartDisplay = document.querySelector(".cartDisplay");
     let cartRowContents = `    
-      <div class="ijsjeDisplay">
-        <div class="ijsjeRowBottom">
-          <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
-          <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
-          <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
-        </div>
-        <div class="ijsjeRowTop">
-         <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
-         <div class="bolCartSet" id="bolCartSet${cartIndex}-4"></div>
-        </div>
-      </div>
+    <div class="ijsjeDisplay">
+    <div class="ijsjeRowBottom">
+    `;
 
-      <div class="containerCartDisplay">
-        <img src="img/hoorntje.png" id="hoorntjeCart${cartIndex}Display" class="hoorntjeCartDisplay">
-        <img src="img/potje.png" id="potjeCart${cartIndex}Display" class="potjeCartDisplay">
-      </div>`;
+    for (let i = 0; i < cart.length; i++) {
+      let currentCartItem = cart[i];
+
+      for (let j = 0; j < currentCartItem.smaakArray.length; j++) {
+        cartRowContents += `<div class="bolCartSet" id="bolCartSet${cartIndex}-${j}"></div>`;
+      }
+    }
+
+    cartRowContents += `
+    </div>
+    </div>
+    <div class="containerCartDisplay">
+    <img src="img/${cart[cartIndex].container}.png" id="${cart[cartIndex].container}Cart${cartIndex}Display" class="${cart[cartIndex].container}CartDisplay">
+    </div>`;
 
     cartRow.innerHTML = cartRowContents;
     cartDisplay.append(cartRow);
     cartRow.classList.add("cartDisplay");
 
     //code voor bolletjes in cart te printen
-    bolCartIdArray = [];
-
     for (let i = 0; i < cart.length; i++) {
       let currentCartItem = cart[i];
 
@@ -261,19 +264,6 @@ $(document).ready(() => {
         $(bolId).css("background-color", smaak.kleurcode);
         $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
       }
-    }
-
-    //code voor hoorntje/potje in cart te printen
-    let a = "#hoorntjeCart" + cartIndex + "Display";
-    let b = "#potjeCart" + cartIndex + "Display";
-
-    $(a).hide();
-    $(b).hide();
-
-    if (cart[cartIndex].container == "hoorntje") {
-      $(a).show();
-    } else {
-      $(b).show();
     }
 
     clearDisplay();
