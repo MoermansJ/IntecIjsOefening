@@ -1,4 +1,4 @@
-//The code written below is far from perfect and can be optimised in various aspects.
+//The code written below is far from perfect and can be optimised in various aspects, which I will not be doing.
 //This being my first project assignment it will serve as a point of reference as I grow and develop my skills as a web developer.
 
 $(document).ready(() => {
@@ -162,6 +162,9 @@ $(document).ready(() => {
     $("#bolSet0-4").css("box-shadow", "none");
     $("#potjeDisplay").css("display", "none");
     $("#hoorntjeDisplay").css("display", "none");
+    $("input[type=checkbox]").prop("checked", false);
+    $("input[type=radio]").prop("checked", false);
+    $("input[type=number]").hide();
 
     a = 0;
     b = 0;
@@ -227,6 +230,79 @@ $(document).ready(() => {
     let cartIndex = cart.length;
     cart.push(newIjsje);
 
+    let cartRow = document.createElement("div");
+    let cartDisplay = document.querySelector(".cartDisplay");
+    let cartRowContents = "";
+
+    if (cart[cartIndex].container == "hoorntje") {
+      cartRowContents = `    
+      <div class="ijsjeCartDisplay">
+        <div class="ijsjeCartRowTop">
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
+        </div>
+        <div class="ijsjeCartRowBottom">      
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
+        </div>
+
+        <div class="containerCartDisplay">
+          <img src="img/${cart[cartIndex].container}.png" id="${cart[cartIndex].container}Cart${cartIndex}Display" class="${cart[cartIndex].container}CartDisplay">
+        </div>
+      </div>`;
+    } else {
+      cartRowContents = `    
+      <div class="ijsjeCartDisplay">
+        <div class="ijsjeCartRowTop">
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-2"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-4"></div>
+        </div>
+        <div class="ijsjeCartRowBottom">      
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-0"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-1"></div>
+          <div class="bolCartSet" id="bolCartSet${cartIndex}-3"></div>
+        </div>
+      </div>
+      <div class="containerCartDisplay">
+        <img src="img/${cart[cartIndex].container}.png" id="${cart[cartIndex].container}Cart${cartIndex}Display" class="${cart[cartIndex].container}CartDisplay">
+      </div>`;
+    }
+
+    cartRow.innerHTML = cartRowContents;
+    cartDisplay.append(cartRow);
+    cartRow.classList.add("cartRow");
+
+    for (let i = 0; i < cart.length; i++) {
+      let currentCartItem = cart[i];
+
+      for (let j = 0; j < currentCartItem.smaakArray.length; j++) {
+        let bolId = "#bolCartSet" + i + "-" + j;
+        let smaak = eval(currentCartItem.smaakArray[j]);
+        $(bolId).css("background-color", smaak.kleurcode);
+        $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      }
+    }
+
+    clearDisplay();
+  }
+});
+
+/*
+  for (const [key, value] of Object.entries(cart[i])) {
+        alert(`${key} = ${value}`);
+      }
+
+
+for (let i = 0; i < smaakArray.length; i++) {
+  let bolId = "#bolSet0" + "-" + i;
+  arrayBolIds.push(bolId);
+}
+
+for (const [key, value] of Object.entries(cart[0])) {
+  alert(`${key} = ${value}`);
+}
+*/
+
+/*
     //code om HTML tags aan te maken van de items in cart
     let cartRow = document.createElement("div");
     let cartDisplay = document.querySelector(".cartDisplay");
@@ -265,23 +341,4 @@ $(document).ready(() => {
         $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
       }
     }
-
-    clearDisplay();
-  }
-});
-
-/*
-  for (const [key, value] of Object.entries(cart[i])) {
-        alert(`${key} = ${value}`);
-      }
-
-
-for (let i = 0; i < smaakArray.length; i++) {
-  let bolId = "#bolSet0" + "-" + i;
-  arrayBolIds.push(bolId);
-}
-
-for (const [key, value] of Object.entries(cart[0])) {
-  alert(`${key} = ${value}`);
-}
-*/
+    */
