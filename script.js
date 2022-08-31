@@ -55,8 +55,8 @@ $(document).ready(() => {
     max = 3;
     $("#bolSet0-0").show();
     $("#bolSet0-1").show();
-    $("#bolSet0-2").show();
-    $("#bolSet0-3").hide();
+    $("#bolSet0-2").hide();
+    $("#bolSet0-3").show();
     $("#bolSet0-4").hide();
   });
 
@@ -218,8 +218,13 @@ $(document).ready(() => {
     for (let i = 0; i < newIjsje.smaakArray.length; i++) {
       let bolId = "#bolSet0" + "-" + i;
       let smaak = eval(newIjsje.smaakArray[i]);
-      $(bolId).css("background-color", smaak.kleurcode);
-      $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      if (i == 2 && newIjsje.container == "hoorntje") {
+        $("#bolSet0-3").css("background-color", smaak.kleurcode);
+        $("#bolSet0-3").css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      } else {
+        $(bolId).css("background-color", smaak.kleurcode);
+        $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+      }
     }
 
     let containerDisplay = "#" + newIjsje.container + "Display";

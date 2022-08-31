@@ -16,32 +16,6 @@ h2 {
   font-weight: 400;
 }
 
-.backerWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.backer {
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 50px;
-  z-index: -1;
-  position: absolute;
-  width: 50vw;
-  min-width: 530px;
-  max-width: 800px;
-  min-height: 490px;
-  height: 40vh;
-  outline: 5px solid rgb(255, 173, 20);
-  outline-offset: -15px;
-  backdrop-filter: blur(5px);
-}
-
-.flex-container-cart {
-  position: absolute;
-  margin-left: 84.5vw;
-}
-
 .wallpaper {
   position: absolute;
   background-image: url("img/wallpaper - copy.png");
@@ -52,6 +26,8 @@ h2 {
 }
 
 .navbalk {
+  grid-column: 3;
+  grid-row: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,33 +38,98 @@ h2 {
   z-index: -1;
 }
 
-.flex-container-top {
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 100px;
+  margin-top: 40px;
+}
+
+.backer {
+  grid-row: 2;
+  grid-column: 3;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+  z-index: -1;
+  width: 50vw;
+  min-width: 530px;
+  max-width: 800px;
+  min-height: 530px;
+  height: 40vh;
+  outline: 5px solid rgb(255, 173, 20);
+  outline-offset: -15px;
+  backdrop-filter: blur(5px);
+}
+
+.backerCart {
+  grid-row: 2;
+  grid-column: 4;
+  z-index: -1;
+  width: 150px;
+  min-height: 510px;
+  height: 40vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+  outline: 5px solid rgb(255, 173, 20);
+  outline-offset: -15px;
+  backdrop-filter: blur(5px);
+}
+
+.rightSideWrapper {
+  display: grid;
+  grid-template-rows: 120px 140px 100px auto;
+  min-width: 160px;
+  max-width: 300px;
+  width: 15vw;
+  grid-column: 2;
+}
+
+.invoer {
+  grid-row: 1;
+}
+
+.smaken {
+  grid-row: 2;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.knoppen {
+  grid-row: 3;
+  display: flex;
+  justify-content: space-between;
+  margin-left: clamp(2vw, 2.5vw, 3vw); /*clamp(minimum,preferred,maximum)*/
+  max-width: 230px;
+  margin-top: 80px;
+}
+
+.flex-container-top {
+  grid-column: 3;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-top: 60px;
 }
 
 .leftSideWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  grid-column: 1;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  justify-self: center;
   min-width: 160px;
-  max-width: px;
+  max-width: 260px;
   width: 15vw;
-  margin-right: 10px;
 }
 
-.rightSideWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 160px;
-  max-width: 300px;
-  width: 15vw;
-  margin-left: 10px;
+.menu {
+  grid-row: 1;
 }
 
 .display {
+  grid-row: 2;
+  align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,21 +161,6 @@ h2 {
   width: 200px;
   border-radius: 50px;
   margin-top: 60px;
-}
-
-.invoer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.knoppen {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 95px;
-  margin-left: clamp(2vw, 2.5vw, 3vw); /*clamp(minimum,preferred,maximum)*/
-  margin-bottom: 10px;
-  max-width: 230px;
 }
 
 .knop {
@@ -205,12 +231,6 @@ h2 {
   margin-left: 40%;
 }
 
-.smaken {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
 #vanilleinput,
 #chocoladeinput,
 #aardbeiinput {
@@ -221,13 +241,22 @@ h2 {
   color: black;
 }
 
-.waarschuwingWrapper {
+.knoppen-wrapper {
+  grid-row: 3;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+}
+
+.waarschuwing-wrapper {
   margin-left: clamp(2vw, 2.5vw, 3vw); /*clamp(minimum,preferred,maximum)*/
+  display: flex;
 }
 
 #waarschuwing {
-  min-width: 23vw;
+  min-width: 22vw;
   position: absolute;
+  margin-left: -10px;
 }
 
 .containerTitel,
@@ -285,18 +314,6 @@ h2 {
   justify-content: center;
 }
 
-.backerCart {
-  position: absolute;
-  z-index: -1;
-  width: 150px;
-  height: 40vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 50px;
-  outline: 5px solid rgb(255, 173, 20);
-  outline-offset: -15px;
-  backdrop-filter: blur(5px);
-}
-
 .cartRow {
   position: relative;
   display: flex;
@@ -351,29 +368,4 @@ h2 {
   z-index: 1;
   justify-content: center;
   position: absolute;
-}
-
-.github-container {
-  position: absolute;
-  margin-top: 31.5vh;
-  margin-left: 20px;
-}
-
-.github-container img {
-  filter: sepia(100%);
-}
-
-.github-container a {
-  text-decoration: none;
-}
-
-.github-container a:hover {
-  color: rgb(255, 173, 20);
-}
-
-#github-image {
-  height: 20px;
-  margin-right: 5px;
-  filter: brightness(0.95) invert(0.7) sepia(0.5) hue-rotate(-5deg)
-    saturate(800%);
 }

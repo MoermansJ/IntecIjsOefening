@@ -21,110 +21,102 @@
 
     <div class="navbalk"><img class="logo" src="img/jon&athan.png"></div>
 
-    <div class="backerWrapper">
+    <div class="grid-wrapper">
       <div class="backer"></div>
-    </div>
-
-    <div class="flex-container-cart">
       <div class="backerCart">
         <div class="cartDisplay"></div>
       </div>
-    </div>
+      <div class="flex-container-top">
 
-    <div class="flex-container-top">
-
-      <div class="leftSideWrapper">
-        <div class="menu">
-          <h2 class="menuTitel">Menu</h2>
-          <span class="menuItemLijst" id="menuItemLijst">
-            <ul>
-              <li><span class="menuItem">Vanille
-                  <span class="menuItemRechts">€1.00</span></span></li>
-              <li><span class="menuItem">Chocolade</span>
-                <span class="menuItemRechts">€1.00</span>
-              </li>
-              <li><span class="menuItem">Aardbei</span>
-                <span class="menuItemRechts">€1.00</span>
-              </li>
-            </ul>
-          </span>
-        </div>
-
-        <div class="display">
-          <span class="ijsjeDisplay">
-            <span class="ijsjeRowBottom">
-              <div id="bolSet0-0"></div>
-              <div id="bolSet0-1"></div>
-              <div id="bolSet0-3"></div>
-            </span>
-            <span class="ijsjeRowTop">
-              <div id="bolSet0-2"></div>
-              <div id="bolSet0-4"></div>
-            </span>
-          </span>
-
-          <span class="containerDisplay">
-            <img src="img/hoorntje.png" id="hoorntjeDisplay">
-            <img src="img/potje.png" id="potjeDisplay">
-          </span>
-        </div>
-
-        <div class="github-container">
-          <a target="_blank" href="https://github.com/MoermansJ/IntecIjsOefening">
-            <img src=" ./img/github.png" id="github-image">
-            Check me out on Github
-          </a>
-        </div>
-
-      </div>
-
-      <div class="rightSideWrapper">
-        <div class="invoer">
-          <form>
-            <h2 class="containerTitel">Potje/hoorntje</h2>
-            <span class="containerAntwoorden">
-              <span class="container">
-                <input type="radio" id="potje" value="potje" name="container" required>
-                <label for="potje" class="goldHover">Potje</label>
-              </span>
-              <span class="container">
-                <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
-                <label for="hoorntje" class="goldHover">Hoorntje</label>
-              </span>
-            </span>
-        </div>
-
-        <div class="smaken">
-          <h2 class="smakenTitel">Smaken</h2>
-          <div class="smakenAntwoorden">
-            <span>
-              <input type="checkbox" id="vanille" value="vanille" name="smaak">
-              <label for="vanille" class="goldHover">Vanille</label>
-              <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
-            </span>
-            <span>
-              <input type="checkbox" id="chocolade" value="chocolade" name="smaak">
-              <label for="chocolade" class="goldHover">Chocolade</label>
-              <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
-            </span>
-            <span>
-              <input type="checkbox" id="aardbei" value="aardbei" name="smaak">
-              <label for="aardbei" class="goldHover">Aardbei</label>
-              <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
+        <div class="leftSideWrapper">
+          <div class="menu">
+            <h2 class="menuTitel">Menu</h2>
+            <span class="menuItemLijst" id="menuItemLijst">
+              <ul>
+                <li><span class="menuItem">Vanille
+                    <span class="menuItemRechts">€1.00</span></span></li>
+                <li><span class="menuItem">Chocolade</span>
+                  <span class="menuItemRechts">€1.00</span>
+                </li>
+                <li><span class="menuItem">Aardbei</span>
+                  <span class="menuItemRechts">€1.00</span>
+                </li>
+              </ul>
             </span>
           </div>
-          </form>
+
+          <div class="display">
+            <span class="ijsjeDisplay">
+              <span class="ijsjeRowBottom">
+                <div id="bolSet0-0"></div>
+                <div id="bolSet0-1"></div>
+                <div id="bolSet0-2"></div>
+              </span>
+              <span class="ijsjeRowTop">
+                <div id="bolSet0-3"></div>
+                <div id="bolSet0-4"></div>
+              </span>
+            </span>
+
+            <span class="containerDisplay">
+              <img src="img/hoorntje.png" id="hoorntjeDisplay">
+              <img src="img/potje.png" id="potjeDisplay">
+            </span>
+          </div>
+
         </div>
 
-        <span class="knoppen">
-          <span class="knop"><img src="img/button.png" id="ijsKnopGroen"><img src="img/scoop.png" id="ok"></span>
-          <span class="knop"><img src="img/button.png" id="ijsKnopRood"><img src="img/reset.png" id="clear"></span>
-          <span class="knop"><img src="img/button.png" id="ijsKnopBlauw"><img src="img/addToCart.svg"
-              id="toevoegen"></span>
-        </span>
+        <div class="rightSideWrapper">
+          <div class="invoer">
+            <form>
+              <h2 class="containerTitel">Potje/hoorntje</h2>
+              <span class="containerAntwoorden">
+                <span class="container">
+                  <input type="radio" id="potje" value="potje" name="container" required>
+                  <label for="potje" class="goldHover">Potje</label>
+                </span>
+                <span class="container">
+                  <input type="radio" id="hoorntje" value="hoorntje" name="container" required>
+                  <label for="hoorntje" class="goldHover">Hoorntje</label>
+                </span>
+              </span>
+          </div>
 
-        <div class="waarschuwingWrapper">
-          <p id="waarschuwing">Te veel bolletjes voor een hoorntje!</p>
+          <div class="smaken">
+            <h2 class="smakenTitel">Smaken</h2>
+            <div class="smakenAntwoorden">
+              <span>
+                <input type="checkbox" id="vanille" value="vanille" name="smaak">
+                <label for="vanille" class="goldHover">Vanille</label>
+                <input type="number" min="1" max="5" id="vanilleinput" placeholder="aantal bollen" />
+              </span>
+              <span>
+                <input type="checkbox" id="chocolade" value="chocolade" name="smaak">
+                <label for="chocolade" class="goldHover">Chocolade</label>
+                <input type="number" min="1" max="5" id="chocoladeinput" placeholder="aantal bollen" />
+              </span>
+              <span>
+                <input type="checkbox" id="aardbei" value="aardbei" name="smaak">
+                <label for="aardbei" class="goldHover">Aardbei</label>
+                <input type="number" min="1" max="5" id="aardbeiinput" placeholder="aantal bollen" />
+              </span>
+            </div>
+            </form>
+          </div>
+
+          <div class="knoppen-wrapper">
+            <div class="knoppen">
+              <div class="knop"><img src="img/button.png" id="ijsKnopGroen"><img src="img/scoop.png" id="ok"></div>
+              <div class="knop"><img src="img/button.png" id="ijsKnopRood"><img src="img/reset.png" id="clear"></div>
+              <div class="knop"><img src="img/button.png" id="ijsKnopBlauw"><img src="img/addToCart.svg" id="toevoegen">
+              </div>
+            </div>
+
+            <div class="waarschuwing-wrapper">
+              <p id="waarschuwing">Te veel bolletjes voor een hoorntje!</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
