@@ -12,6 +12,7 @@ $(document).ready(() => {
   let newIjsje;
   let cart = [];
   let prijs = 0;
+  let geschept = false;
 
   containerActualValueCheck();
 
@@ -113,17 +114,12 @@ $(document).ready(() => {
 
   $("#ok").on("click", () => {
     som = a + b + c;
-    /*
-    if (som === 0 || containerKeuze == false) {
-      alert("Je bent iets vergeten in te vullen in het formulier!");
-    } else */
+
     if (som > max) {
       alert(
         "Maximum " + max + " bolletjes ijs voor een " + containerKeuze + "!"
       );
     } else {
-      //document.querySelector("#prijs").innerHTML = prijs;
-
       ijsScheppen();
     }
   });
@@ -133,8 +129,11 @@ $(document).ready(() => {
   });
 
   $("#toevoegen").on("click", () => {
-    addToCart();
-    displayCartItem();
+    if (geschept == true) {
+      addToCart();
+      updateTotalCartPrice();
+      displayCartItem();
+    }
   });
 
   function containerActualValueCheck() {
@@ -142,8 +141,21 @@ $(document).ready(() => {
     let som = a + b + c;
     if (som > max || containerKeuze != "") {
       $("#waarschuwing").show();
+      $("#ijsKnopGroen").css("filter", "saturate(0)");
+      $("#ok").css("filter", "saturate(0)");
     } else {
       $("#waarschuwing").hide();
+      $("#ijsKnopGroen").css("filter", "");
+      $("#ok").css("filter", "");
+    }
+
+    if (geschept == true) {
+      $("#ijsKnopBlauw").css("filter", "");
+      $("#toevoegen").css("filter", "");
+    } else if (geschept == false) {
+      $("#ijsKnopBlauw").css("filter", "saturate(0)");
+      $("#toevoegen").css("filter", "saturate(0)");
+      $("#toevoegen").css("disabled", "true");
     }
 
     setTimeout(containerActualValueCheck, 50);
@@ -172,6 +184,8 @@ $(document).ready(() => {
     containerKeuze = "";
     smaakArray = [];
     arrayBolIds = [];
+    createIjsjeObject([], "");
+    geschept = false;
   }
 
   function createSmaakArray() {
@@ -215,20 +229,36 @@ $(document).ready(() => {
   function ijsScheppen() {
     newIjsje = createIjsjeObject(createSmaakArray(), getContainerKeuze());
 
-    for (let i = 0; i < newIjsje.smaakArray.length; i++) {
-      let bolId = "#bolSet0" + "-" + i;
-      let smaak = eval(newIjsje.smaakArray[i]);
-      if (i == 2 && newIjsje.container == "hoorntje") {
-        $("#bolSet0-3").css("background-color", smaak.kleurcode);
-        $("#bolSet0-3").css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
-      } else {
-        $(bolId).css("background-color", smaak.kleurcode);
-        $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+    if (newIjsje.container != "" && som != 0) {
+      geschept = true;
+
+      for (let i = 0; i < newIjsje.smaakArray.length; i++) {
+        let bolId = "#bolSet0" + "-" + i;
+        let smaak = eval(newIjsje.smaakArray[i]);
+        if (i == 2 && newIjsje.container == "hoorntje") {
+          $("#bolSet0-3").css("background-color", smaak.kleurcode);
+          $("#bolSet0-3").css(
+            "box-shadow",
+            "1px 1px inset rgba(0, 0, 0, 0.733"
+          );
+        } else {
+          $(bolId).css("background-color", smaak.kleurcode);
+          $(bolId).css("box-shadow", "1px 1px inset rgba(0, 0, 0, 0.733");
+        }
+      }
+
+      let containerDisplay = "#" + newIjsje.container + "Display";
+      $(containerDisplay).show();
+
+      for (let i = 0; i < newIjsje.smaakArray.length; i++) {
+        let smaak = eval(newIjsje.smaakArray[i]);
+        prijs += smaak.prijs;
       }
     }
-
-    let containerDisplay = "#" + newIjsje.container + "Display";
-    $(containerDisplay).show();
+  }
+  function updateTotalCartPrice() {
+    let priceDisplay = document.querySelector("#price");
+    priceDisplay.innerHTML = "Totaal €" + prijs.toFixed(2);
   }
 
   function addToCart() {
