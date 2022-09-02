@@ -130,6 +130,7 @@ $(document).ready(() => {
 
   $("#toevoegen").on("click", () => {
     if (geschept == true) {
+      $("#backerCart").removeClass("fade");
       addToCart();
       updateTotalCartPrice();
       displayCartItem();
@@ -259,6 +260,7 @@ $(document).ready(() => {
   function updateTotalCartPrice() {
     let priceDisplay = document.querySelector("#price");
     priceDisplay.innerHTML = "Totaal €" + prijs.toFixed(2);
+    priceDisplay.addClass("centerText");
   }
 
   function addToCart() {

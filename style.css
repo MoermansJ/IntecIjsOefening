@@ -67,7 +67,7 @@ h2 {
   grid-column: 4;
   display: grid;
   z-index: 1;
-  width: 150px;
+  width: 165px;
   min-height: 530px;
   height: 40vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -75,6 +75,7 @@ h2 {
   outline: 5px solid rgb(255, 173, 20);
   outline-offset: -15px;
   backdrop-filter: blur(5px);
+  transition: all 0.15s ease-in-out;
 }
 
 .cartDisplay {
@@ -98,6 +99,16 @@ h2 {
   z-index: 2;
   border-top: rgb(255, 173, 20) solid 2px;
   border-radius: 1px;
+}
+
+/*
+.fade {
+  opacity: 0;
+  transition: all 0.15s ease-in-out;
+}*/
+
+.centerText {
+  justify-content: center;
 }
 
 .checkoutButton {
