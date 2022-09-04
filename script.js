@@ -13,6 +13,7 @@ $(document).ready(() => {
   let cart = [];
   let prijs = 0;
   let geschept = false;
+  let reedsGeschept = false;
 
   containerActualValueCheck();
 
@@ -119,8 +120,9 @@ $(document).ready(() => {
       alert(
         "Maximum " + max + " bolletjes ijs voor een " + containerKeuze + "!"
       );
-    } else {
+    } else if (reedsGeschept == false) {
       ijsScheppen();
+      reedsGeschept = true;
     }
   });
 
@@ -184,9 +186,9 @@ $(document).ready(() => {
     c = 0;
     containerKeuze = "";
     smaakArray = [];
-    arrayBolIds = [];
     createIjsjeObject([], "");
     geschept = false;
+    reedsGeschept = false;
   }
 
   function createSmaakArray() {
@@ -259,7 +261,7 @@ $(document).ready(() => {
   }
   function updateTotalCartPrice() {
     let priceDisplay = document.querySelector("#price");
-    priceDisplay.innerHTML = "Totaal €" + prijs.toFixed(2);
+    priceDisplay.innerHTML = "Totaal €" + prijs.toFixed(2); //toFixed(2) laat 2 cijfers na de komma zien
     priceDisplay.addClass("centerText");
   }
 

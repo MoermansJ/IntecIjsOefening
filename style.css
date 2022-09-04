@@ -101,11 +101,10 @@ h2 {
   border-radius: 1px;
 }
 
-/*
 .fade {
   opacity: 0;
-  transition: all 0.15s ease-in-out;
-}*/
+  transition: all 0.05s ease-in-out;
+}
 
 .centerText {
   justify-content: center;
@@ -114,14 +113,26 @@ h2 {
 .checkoutButton {
   justify-self: center;
   grid-row: 3;
-  width: 110px;
-  height: 50px;
-  margin-top: 10px;
+  width: 96px;
+  height: 20px;
+  margin-top: 20px;
   border-radius: 50px;
-  outline: 5px solid rgb(255, 173, 20);
-  outline-offset: -15px;
+  border: 5px solid rgb(255, 173, 20);
   display: flex;
   justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.cancelButton {
+  cursor: pointer;
+  height: 20px;
+  z-index: 10;
+  position: absolute;
+  margin-left: 50px;
+  margin-bottom: 50px;
 }
 
 .rightSideWrapper {
@@ -246,8 +257,20 @@ h2 {
 
 #ok:hover,
 #clear:hover,
-#toevoegen:hover {
+#toevoegen:hover,
+#bestellen:hover {
   transform: scale(1.25);
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+#bestellen {
+  transition: all 0.15s ease-in-out;
+  z-index: 1;
+}
+
+#bestellen:hover {
+  transform: scale(1.15);
   transition: 0.15s;
   cursor: pointer;
 }
